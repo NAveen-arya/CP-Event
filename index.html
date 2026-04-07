@@ -993,6 +993,33 @@
     <div class="contact-inner">
       <span class="section-label" style="text-align:center;display:block;">✦ Get In Touch</span>
       <h2 class="section-title">Book Your <span class="gold-accent">Special Day</span></h2>
+
+<div style="margin-top:40px;">
+
+<form id="bookingForm" style="max-width:600px;margin:auto;">
+
+<input type="text" id="name" placeholder="Your Name" required style="width:100%;padding:12px;margin-bottom:10px;">
+
+<input type="text" id="phone" placeholder="Phone Number" required style="width:100%;padding:12px;margin-bottom:10px;">
+
+<select id="event" style="width:100%;padding:12px;margin-bottom:10px;">
+<option>Event Type</option>
+<option>Wedding</option>
+<option>Birthday</option>
+<option>Party</option>
+</select>
+
+<input type="date" id="date" style="width:100%;padding:12px;margin-bottom:10px;">
+
+<textarea id="message" placeholder="Your Requirement" style="width:100%;padding:12px;margin-bottom:10px;"></textarea>
+
+<button type="submit" style="width:100%;padding:12px;background:#C9A84C;">Submit</button>
+
+</form>
+
+</div>
+
+      
       <div style="display:flex;justify-content:center;margin-bottom:20px;">
         <div class="title-underline" style="justify-content:center;"><div class="diamond"></div></div>
       </div>
@@ -1088,5 +1115,43 @@
   <div class="footer-copy">© CP Events · Deepak Cinema, Muzaffarpur 842001 · naveen94708@gmail.com · +91 94708 94039</div>
 </footer>
 
+
+<!-- Firebase SDK (simple version) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDIg-XjXkqSp9iEpEXUXooqe5JDmJA5utY",
+  authDomain: "cp-events-62954.firebaseapp.com",
+  projectId: "cp-events-62954",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Form submit
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  db.collection("bookings").add({
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    event: document.getElementById("event").value,
+    date: document.getElementById("date").value,
+    message: document.getElementById("message").value,
+    createdAt: new Date()
+  })
+  .then(() => {
+    alert("✅ Booking Submitted!");
+    document.getElementById("bookingForm").reset();
+  })
+  .catch((error) => {
+    alert("❌ Error: " + error.message);
+  });
+});
+</script>
+  
 </body>
 </html>
