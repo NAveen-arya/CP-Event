@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CP Events – Premium Event Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #F5E8C0;
+    --gold-dark: #8B6914;
+    --black: #0A0A0A;
+    --black-soft: #111111;
+    --black-card: #161616;
+    --white: #FDFBF7;
+    --white-dim: #E8E0D0;
+    --glow: 0 0 30px rgba(201,168,76,0.4), 0 0 60px rgba(201,168,76,0.15);
+    --glow-soft: 0 0 15px rgba(201,168,76,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════
+     COVER PAGE
+  ═══════════════════════════════════════ */
+  .cover {
+    min-height: 100vh;
+    background: var(--black);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,168,76,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 0% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 100% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  /* Decorative corner ornaments */
+  .corner {
+    position: absolute;
+    width: 120px; height: 120px;
+    border-color: rgba(201,168,76,0.5);
+    border-style: solid;
+  }
+  .corner-tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+  .corner-tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+  .corner-bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
+  .corner-br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+
+  /* Gold particle lines */
+  .line-h {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6), transparent);
+    width: 60%;
+    left: 20%;
+  }
+  .line-h.top { top: 28%; }
+  .line-h.bottom { bottom: 28%; }
+
+  .cover-logo-ring {
+    width: 160px; height: 160px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+    box-shadow: var(--glow);
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+  .cover-logo-ring::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 50%;
+  }
+  @keyframes ringPulse {
+    0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.3), 0 0 50px rgba(201,168,76,0.1); }
+    50% { box-shadow: 0 0 40px rgba(201,168,76,0.6), 0 0 80px rgba(201,168,76,0.2); }
+  }
+
+  .monogram {
+    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--gold);
+    text-shadow: var(--glow-soft);
+    line-height: 1;
+  }
+
+  .cover-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
+
+  .cover-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .cover-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 4px;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3);
+    margin-bottom: 8px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  .cover-divider {
+    display: flex; align-items: center; gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .cover-divider span { color: var(--gold); font-size: 18px; }
+  .cover-divider::before, .cover-divider::after {
+    content: '';
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .cover-divider::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+  .cover-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--white-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover-unit {
+    font-size: 12px;
+    color: rgba(201,168,76,0.7);
+    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .cover-address {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1.5px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION WRAPPER
+  ═══════════════════════════════════════ */
+  .section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+    margin: 0;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    opacity: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .gold-accent { color: var(--gold); }
+
+  .title-underline {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 40px;
+  }
+  .title-underline::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    max-width: 200px;
+  }
+  .title-underline .diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: var(--glow-soft);
+    flex-shrink: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     ABOUT SECTION
+  ═══════════════════════════════════════ */
+  .about-page {
+    background: linear-gradient(180deg, var(--black) 0%, #0E0C08 100%);
+    page-break-before: always;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: rgba(253,251,247,0.8);
+    margin-bottom: 20px;
+  }
+
+  .about-highlight {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    margin: 30px 0;
+  }
+  .about-highlight p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px !important;
+    font-style: italic;
+    color: var(--gold-pale) !important;
+    line-height: 1.6 !important;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-frame {
+    position: relative;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 16px;
+  }
+  .about-img-frame::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: -8px; bottom: -8px;
+    border: 1px solid rgba(201,168,76,0.1);
+    pointer-events: none;
+  }
+  .about-img-frame img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) sepia(0.1);
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 100px; height: 100px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: var(--glow);
+  }
+  .about-badge strong {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: var(--black);
+    line-height: 1;
+  }
+  .about-badge span {
+    font-size: 9px;
+    color: var(--black-soft);
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .stats-row {
+    display: flex; gap: 30px;
+    margin-top: 40px;
+  }
+  .stat {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.04);
+  }
+  .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    color: var(--gold);
+    display: block;
+    text-shadow: var(--glow-soft);
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  /* ═══════════════════════════════════════
+     SERVICES SECTION
+  ═══════════════════════════════════════ */
+  .services-page {
+    background: #080808;
+    page-break-before: always;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .services-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--black-card);
+    border: 1px solid rgba(201,168,76,0.2);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+  .service-card:hover {
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: var(--glow-soft);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.7) sepia(0.15);
+    display: block;
+    transition: filter 0.4s;
+  }
+  .service-card:hover .service-img { filter: brightness(0.85) sepia(0.05); }
+
+  .service-body {
+    padding: 24px 20px;
+  }
+
+  .service-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.6));
+  }
+
+  .service-name {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .service-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: rgba(253,251,247,0.65);
+    line-height: 1.7;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  /* ═══════════════════════════════════════
+     WHY CHOOSE US
+  ═══════════════════════════════════════ */
+  .why-page {
+    background: linear-gradient(135deg, #0A0A0A 0%, #0D0B06 50%, #0A0A0A 100%);
+    page-break-before: always;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .why-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .why-img-box {
+    position: relative;
+    overflow: hidden;
+  }
+  .why-img-box img {
+    width: 100%; height: 160px;
+    object-fit: cover;
+    filter: brightness(0.65) sepia(0.2);
+    display: block;
+    transition: filter 0.4s;
+  }
+  .why-img-box:hover img { filter: brightness(0.8) sepia(0.05); }
+  .why-img-box::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px solid rgba(201,168,76,0.2);
+    pointer-events: none;
+  }
+  .why-img-box.tall { grid-row: span 2; }
+  .why-img-box.tall img { height: 332px; }
+
+  .why-points { list-style: none; }
+  .why-point {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .why-point:last-child { border-bottom: none; }
+
+  .why-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(201,168,76,0.06);
+    box-shadow: var(--glow-soft);
+  }
+
+  .why-text h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .why-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: rgba(253,251,247,0.6);
+    line-height: 1.6;
+  }
+
+  /* ═══════════════════════════════════════
+     CONTACT SECTION
+  ═══════════════════════════════════════ */
+  .contact-page {
+    background: var(--black);
+    page-break-before: always;
+  }
+
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-glow-ring {
+    width: 200px; height: 200px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    box-shadow: var(--glow);
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+  .contact-glow-ring::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+  .contact-glow-ring::after {
+    content: '';
+    position: absolute; inset: 24px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+  }
+  .contact-glow-ring .inner-mono {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--gold);
+    text-shadow: var(--glow);
+    line-height: 1;
+    z-index: 1;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .contact-card {
+    background: var(--black-card);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 28px;
+    position: relative;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .contact-card-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .contact-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .contact-item:last-child { margin-bottom: 0; }
+
+  .ci-icon {
+    font-size: 16px;
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.5));
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ci-text strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    color: var(--gold-pale);
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .ci-text span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: rgba(253,251,247,0.7);
+    line-height: 1.4;
+  }
+
+  /* Full-width contact card */
+  .contact-card-full {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    box-shadow: var(--glow-soft);
+  }
+  .contact-card-full::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .contact-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--gold-pale);
+    margin-bottom: 12px;
+  }
+  .contact-cta-sub {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════ */
+  .footer {
+    background: #050505;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    text-shadow: var(--glow-soft);
+  }
+  .footer-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+  .footer-line {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto;
+  }
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+  }
+
+  /* ═══════════════════════════════════════
+     PAGE BG DIVIDERS
+  ═══════════════════════════════════════ */
+  .page-divider {
+    height: 6px;
+    background: linear-gradient(90deg, #0A0A0A, var(--gold-dark), var(--gold), var(--gold-dark), #0A0A0A);
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT / PDF STYLES
+  ═══════════════════════════════════════ */
+  @media print {
+    .cover, .about-page, .services-page, .why-page, .contact-page {
+      page-break-after: always;
+      min-height: 100vh;
+    }
+    body { background: #0A0A0A !important; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 768px) {
+    .about-grid, .why-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-row-2 { grid-template-columns: 1fr; }
+    .contact-cards { grid-template-columns: 1fr; }
+    .contact-card-full { grid-column: span 1; }
+    .stats-row { flex-direction: column; }
+    .section { padding: 60px 20px; }
+    .corner { width: 70px; height: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1: COVER
+═══════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+  <div class="line-h top"></div>
+  <div class="line-h bottom"></div>
+
+  <div class="cover-content">
+    <div class="cover-logo-ring">
+      <span class="monogram">CP</span>
+    </div>
+
+    <div class="cover-tag">✦ Est. Muzaffarpur, Bihar ✦</div>
+
+    <h1 class="cover-title">CP Events</h1>
+    <p class="cover-subtitle">Crafting Unforgettable Celebrations</p>
+
+    <div class="cover-divider">
+      <span>✦</span>
+    </div>
+
+    <p class="cover-desc">Premium Event & Catering Services</p>
+
+    <p class="cover-unit">A Unit of Chaudhary Paan Bhandar</p>
+    <p class="cover-address">Deepak Cinema, Muzaffarpur, Bihar — 842001</p>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 2: ABOUT
+═══════════════════════════════════════ -->
+
+<section class="about-page">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">✦ Our Story</span>
+        <h2 class="section-title">Where Luxury <br><span class="gold-accent">Meets Tradition</span></h2>
+        <div class="title-underline"><div class="diamond"></div></div>
+
+        <p>CP Events is a distinguished event services brand rooted in the legacy of Chaudhary Paan Bhandar — a name trusted for generations in Muzaffarpur. We bring the same warmth, authenticity, and passion to every wedding and celebration we serve.</p>
+
+        <div class="about-highlight">
+          <p>"We don't just serve at your event — we become a cherished part of your celebration."</p>
+        </div>
+
+        <p>From the aromatic charm of our signature Paan Counter to the elegant glow of our Coffee Station, every service we offer is designed to create moments that your guests will remember long after the evening ends.</p>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-num">500+</span>
+            <div class="stat-label">Events Served</div>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5</span>
+            <div class="stat-label">Signature Counters</div>
+          </div>
+          <div class="stat">
+            <span class="stat-num">100%</span>
+            <div class="stat-label">Guest Delight</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="about-img-frame">
+          <img 
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" 
+            alt="Elegant Wedding Setup"
+          />
+          <div class="about-badge">
+            <strong>✦</strong>
+            <span>TRUSTED<br>BRAND</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 3: SERVICES
+═══════════════════════════════════════ -->
+<section class="services-page">
+  <div class="section">
+    <div class="services-header">
+      <span class="section-label">✦ What We Offer</span>
+      <h2 class="section-title">Our <span class="gold-accent">Signature Services</span></h2>
+      <div style="display:flex;justify-content:center;margin-bottom:12px;">
+        <div class="title-underline" style="justify-content:center;"><div class="diamond"></div></div>
+      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(253,251,247,0.6);max-width:560px;margin:0 auto;line-height:1.7;">Every counter is crafted with elegance, hygiene, and a dedication to making your celebration extraordinary.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Paan Counter -->
+      <div class="service-card">
+        <img class="service-img"
+          src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80"
+          alt="Paan Counter"
+          onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'"
+        />
+        <div class="service-body">
+          <span class="service-icon">🌿</span>
+          <h3 class="service-name">Paan Counter</h3>
+          <p class="service-desc">Our signature paan station brings the timeless Indian tradition to your celebration. From classic meetha paan to premium banarasi and chocolate varieties, beautifully presented for guests to indulge after the grand feast.</p>
+          <span class="service-tag">Signature Experience</span>
+        </div>
+      </div>
+
+      <!-- Mocktail Counter -->
+      <div class="service-card">
+        <img class="service-img"
+          src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=80"
+          alt="Mocktail Bar"
+        />
+        <div class="service-body">
+          <span class="service-icon">🍹</span>
+          <h3 class="service-name">Mocktail Counter</h3>
+          <p class="service-desc">A vibrant, beautifully lit mocktail bar offering refreshing fruit-based blends, fizzy concoctions, and signature wedding specials. Stunning presentation that doubles as a visual centerpiece for your event.</p>
+          <span class="service-tag">Refreshment Station</span>
+        </div>
+      </div>
+
+      <!-- Fruit Counter -->
+      <div class="service-card">
+        <img class="service-img"
+          src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&q=80"
+          alt="Fruit Counter"
+        />
+        <div class="service-body">
+          <span class="service-icon">🍈</span>
+          <h3 class="service-name">Fruit Counter</h3>
+          <p class="service-desc">An elegant display of fresh seasonal fruits, artfully arranged and beautifully lit. Our fruit counter adds a vibrant, healthy indulgence to your event — from tropical platters to customized fruit chaat stations.</p>
+          <span class="service-tag">Fresh & Elegant</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="services-row-2" style="margin-top:24px;">
+
+      <!-- Dinner Counter -->
+      <div class="service-card">
+        <img class="service-img"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
+          alt="Dinner Counter"
+        />
+        <div class="service-body">
+          <span class="service-icon">🍽️</span>
+          <h3 class="service-name">Dinner Counter</h3>
+          <p class="service-desc">A lavish dinner buffet featuring an exquisite spread of North Indian cuisines. From royal gravies to live tawa rotis, our dinner counter is curated for grandeur, taste, and impeccable presentation befitting a royal wedding.</p>
+          <span class="service-tag">Grand Feast</span>
+        </div>
+      </div>
+
+      <!-- Coffee Machine -->
+      <div class="service-card">
+        <img class="service-img"
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80"
+          alt="Coffee Machine Station"
+        />
+        <div class="service-body">
+          <span class="service-icon">☕</span>
+          <h3 class="service-name">Coffee Machine</h3>
+          <p class="service-desc">A premium automated coffee station serving freshly brewed espresso, cappuccino, hot chocolate, and more. The perfect elegant touch for late-evening wedding receptions that keeps guests warm and delighted.</p>
+          <span class="service-tag">Premium Brew</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 4: WHY CHOOSE US
+═══════════════════════════════════════ -->
+<section class="why-page">
+  <div class="section">
+    <div class="why-grid">
+
+      <div>
+        <span class="section-label">✦ Our Promise</span>
+        <h2 class="section-title">Why Families <br>Choose <span class="gold-accent">CP Events</span></h2>
+        <div class="title-underline"><div class="diamond"></div></div>
+
+        <ul class="why-points">
+          <li class="why-point">
+            <div class="why-icon">👑</div>
+            <div class="why-text">
+              <h4>Legacy of Trust</h4>
+              <p>Backed by the decades-long reputation of Chaudhary Paan Bhandar — a brand families across Muzaffarpur have relied on with absolute confidence.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-icon">✨</div>
+            <div class="why-text">
+              <h4>Premium Presentation</h4>
+              <p>Every counter is designed with aesthetic elegance — from backlit displays to decorated setups that enhance the beauty of your venue.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-icon">🌿</div>
+            <div class="why-text">
+              <h4>Hygiene & Quality</h4>
+              <p>We strictly maintain food safety standards. Fresh ingredients, clean setups, and trained professionals ensure a flawless experience.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-icon">🎯</div>
+            <div class="why-text">
+              <h4>Customized Packages</h4>
+              <p>From intimate family celebrations to grand wedding receptions — our flexible packages are tailored to your specific needs and budget.</p>
+            </div>
+          </li>
+          <li class="why-point">
+            <div class="why-icon">📍</div>
+            <div class="why-text">
+              <h4>Reliable & Punctual</h4>
+              <p>We arrive on time, set up with precision, and ensure seamless service throughout your event — so you can celebrate worry-free.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Visual collage -->
+      <div class="why-visual">
+        <div class="why-img-box tall">
+          <img
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80"
+            alt="Wedding Celebration"
+          />
+        </div>
+        <div class="why-img-box">
+          <img
+            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80"
+            alt="Food Service"
+          />
+        </div>
+        <div class="why-img-box">
+          <img
+            src="https://images.unsplash.com/photo-1536392706976-e486e2ba97af?w=600&q=80"
+            alt="Coffee Service"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 5: CONTACT
+═══════════════════════════════════════ -->
+<section class="contact-page">
+  <div class="section">
+    <div class="contact-inner">
+      <span class="section-label" style="text-align:center;display:block;">✦ Get In Touch</span>
+      <h2 class="section-title">Book Your <span class="gold-accent">Special Day</span></h2>
+      <div style="display:flex;justify-content:center;margin-bottom:20px;">
+        <div class="title-underline" style="justify-content:center;"><div class="diamond"></div></div>
+      </div>
+
+      <div class="contact-glow-ring">
+        <span class="inner-mono">CP</span>
+      </div>
+
+      <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(253,251,247,0.65);line-height:1.8;margin-bottom:40px;">
+        We would be honoured to be a part of your celebration. Reach out to us today to discuss your requirements and let us create a magical experience for you and your guests.
+      </p>
+
+      <div class="contact-cards">
+
+        <!-- Business Details -->
+        <div class="contact-card">
+          <span class="contact-card-label">Business Details</span>
+          <div class="contact-item">
+            <span class="ci-icon">📍</span>
+            <div class="ci-text">
+              <strong>Address</strong>
+              <span>Deepak Cinema, Muzaffarpur<br>Bihar — 842001</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">✉️</span>
+            <div class="ci-text">
+              <strong>Email</strong>
+              <span>naveen94708@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">🏢</span>
+            <div class="ci-text">
+              <strong>Brand</strong>
+              <span>A Unit of Chaudhary Paan Bhandar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Persons -->
+        <div class="contact-card">
+          <span class="contact-card-label">Contact Persons</span>
+          <div class="contact-item">
+            <span class="ci-icon">👤</span>
+            <div class="ci-text">
+              <strong>Owner — Nawal Bhagat</strong>
+              <span>📞 +91 91626 45964</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">📱</span>
+            <div class="ci-text">
+              <strong>General Enquiries</strong>
+              <span>📞 +91 94708 94039</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">⏰</span>
+            <div class="ci-text">
+              <strong>Available</strong>
+              <span>All Days · 9 AM – 9 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Full Width -->
+        <div class="contact-card-full">
+          <p class="contact-cta">"Let's make your celebration unforgettable, together."</p>
+          <p class="contact-cta-sub">✦ &nbsp; Call or WhatsApp us to get a custom quote &nbsp; ✦</p>
+          <div style="margin-top:20px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <div style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);padding:12px 28px;font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:1px;">
+              📞 94708 94039
+            </div>
+            <div style="background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);padding:12px 28px;font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:1px;">
+              📞 91626 45964
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo">CP EVENTS</div>
+  <div class="footer-tag">A Unit of Chaudhary Paan Bhandar · Muzaffarpur, Bihar</div>
+  <div class="footer-line"></div>
+  <div class="footer-copy">© CP Events · Deepak Cinema, Muzaffarpur 842001 · naveen94708@gmail.com · +91 94708 94039</div>
+</footer>
+
+</body>
+</html>
